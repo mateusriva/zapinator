@@ -43,42 +43,48 @@ def zapinate(text, mood="happy", zap_rate=0.5, zap_strength=3):
     # Output variable
     zapinated_text = ""
 
-    # Split input text into tokens by whitespace (TODO: keep nature of whitespaces? like, split lines)
-    for token in text.split():
-        printd("On token {}".format(token))
-        # Process token
-        # If token is small or in discard wordlist, add as is
-        if len(token) <= 2 or token in discard_tokens:
-            printd("\tToken got discarded")
-            zapinated_text += token + " "
-            continue
+    for line in text.split('\n'):
 
-        # Token is valid, deciding if it should be zapinated
-        if random.random() < zap_rate:
-            # Word should be zapinated. Determining strength
-            strength = random.randint(zap_strength[0], zap_strength[1])
-            printd("\tToken is being zapinated with strength {}".format(strength))
+        # Split input text into tokens by whitespace (TODO: keep nature of whitespaces? like, split lines)
+        for token in line.split():
+            printd("On token {}".format(token))
+            # Process token
+            # If token is small or in discard wordlist, add as is
+            if len(token) <= 2 or token in discard_tokens:
+                printd("\tToken got discarded")
+                zapinated_text += token + " "
+                continue
 
-            # If word is in specific_tokens, get specific emojis. else, get mood emojis
-            if token in specific_tokens:
-                possible_emoji = specific_tokens[token]
-                printd("\ttoken is specific, possible: {}".format(possible_emoji))
+            # Token is valid, deciding if it should be zapinated
+            if random.random() < zap_rate:
+                # Word should be zapinated. Determining strength
+                strength = random.randint(zap_strength[0], zap_strength[1])
+                printd("\tToken is being zapinated with strength {}".format(strength))
+
+                # If word is in specific_tokens, get specific emojis. else, get mood emojis
+                if token in specific_tokens:
+                    possible_emoji = specific_tokens[token]
+                    printd("\ttoken is specific, possible: {}".format(possible_emoji))
+                else:
+                    possible_emoji = mood_emoji[mood]
+                    printd("\ttoken is generic, possible: {}".format(possible_emoji))
+
+                # randomly choosing "strength" emojis
+                chosen_emoji = random.choices(possible_emoji, k=strength)
+                printd("\tchosen emoji: {}".format(chosen_emoji))
+
+                # TODO build sets of emoji (like the "topper" combo 😂👌)
+
+                # appending to token in the text
+                zapinated_text += token + " " + "".join(chosen_emoji) + " "
             else:
-                possible_emoji = mood_emoji[mood]
-                printd("\ttoken is generic, possible: {}".format(possible_emoji))
+                # token was not selected for zapination. shame!
+                printd("\tToken was not chosen")
+                zapinated_text += token + " "
 
-            # randomly choosing "strength" emojis
-            chosen_emoji = random.choices(possible_emoji, k=strength)
-            printd("\tchosen emoji: {}".format(chosen_emoji))
-
-            # TODO build sets of emoji (like the "topper" combo 😂👌)
-
-            # appending to token in the text
-            zapinated_text += token + " " + "".join(chosen_emoji) + " "
-        else:
-            # token was not selected for zapination. shame!
-            printd("\tToken was not chosen")
-            zapinated_text += token + " "
+        # <br/> or '/n'
+        # set with <br/> because output is html        
+        zapinated_text += "<br/>"
 
     # turning on cruise control for cool
     zapinated_text = zapinated_text.upper()
@@ -87,10 +93,12 @@ def zapinate(text, mood="happy", zap_rate=0.5, zap_strength=3):
 
 if __name__ == '__main__':
     # main function, for debugging. modify for release.
-    text = "vem de zap, bebe, que vai ser top demais"
+    text = "oie\noie2\noie3"
     zapinated_text = zapinate(text)
 
+    printd("Output: "+format(zapinated_text))
+
     # save to simple html
-    out_file = open("out.html", "w", encoding="utf-8")
+    out_file = open(text.split()[0]+".html", "w+", encoding="utf-8")
     out_file.write("<head><meta charset='utf-8'/></head>\n")
     out_file.write("<body>{}</body>".format(zapinated_text))
