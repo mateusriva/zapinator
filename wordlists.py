@@ -3,7 +3,7 @@
 discard_tokens = ["que", "de"]
 """Tokens that shall never be zapinated. NEVER."""
 
-specific_tokens = {"top" : ["👌"]}
+specific_tokens = {"brasil" : ["🇧🇷"], "festa" : ["🎆", "🎇", "✨", "🎈", "🎉", "🎊"], "top" : ["👌"], "zap" : ["📞", "♣"]}
 """Wordlist of special tokens"""
 
 mood_emoji = {"happy": ["😀","😁","😂","😃","😄","😅","😆","😉","😊","😋","😎","☺","😛","😜","😝", "👌"]}
