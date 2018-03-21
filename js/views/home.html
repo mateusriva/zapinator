@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>Vem de ZAP</title>
+  <title>Vem de ZAP bb - Zapeador de textos</title>
   <meta name="description" content="Vem de zap bb">
 
   <link rel="stylesheet" href="css/zap.css">
@@ -18,26 +18,56 @@
 <body>
   <header>
     <center>
-      <h1>VEM DE ZAP</h1>
+      <h1>
+        <span class="align-middle">VEM DE ZAP bb</span>
+        <img id="logo" class="align-middle" src="images/whatsapp-logo.png" alt="logo" />
+      </h1>
     </center>
   </header>
 
   <aside></aside>
 
   <center>
+    <section id="intro">
+      <div class="w75 wrap">
+        <a href="http://vemdezapbe.be">vemdezapbe.be</a>&nbsp;<img class="emoji-small" src="images/emojis/fistbump.png" alt="fistbump"/>&nbsp;é um zapeador de texto automático. Qualquer mensagem pode ser zapeada pra mandar pro seu bebê&nbsp;<img class="emoji-small" src="images/emojis/sunglasses.png" alt="sunglasses"/>. Além da versão web temos também uma API para você usar nos seus projetos&nbsp;<img class="emoji-small" src="images/emojis/top.png" alt="top"/>.
+      </div>
+    </section>
+
+    <hr>
+
     <section id="mood-selection">
+      <div class="w100 mb10">Escolha o humor do seu zap:</div>
+      <button class="mood-button grow active">
+          <img class="emoji" src="images/emojis/happy.png" alt="happy"/><br/>
+          Feliz
+      </button>
+      <button class="mood-button grow">
+          <img class="emoji" src="images/emojis/angry.png" alt="angry"/><br/>
+          Bravo
+      </button>
     </section>
   
+    <hr>
+    
     <section id="strength-selection">
+      <div>Escolha a intensidade do seu zap:</div>
       <input
         id="strength-slider"
         type="range"
         min="0"
-        max="1000"
+        max="4"
         step="1"
-        value="1"
+        value="0"
       >
-      <div id="strength-show">0</div>
+      <div id="strength-show">
+          <div class="mb10">Zap força fraca</div>
+          <img class="emoji" src="images/emojis/crazy.png" alt="crazy"/>
+      </div>
+    </section>
+
+    <section class="mt20">
+      <textarea id="text-box" rows="10">Cole seu texto para zapear aqui...</textarea>
     </section>
   </center>
 </body>
