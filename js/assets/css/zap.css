@@ -4,7 +4,6 @@ body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", 
   Helvetica, Arial, "Lucida Grande", sans-serif;
 
-  max-width: 650px;
   margin: 0 auto;
 
   font-size: 14px;
@@ -16,13 +15,6 @@ a {
 
 a:hover {
   text-decoration: underline;
-}
-
-section {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 img.emoji, #logo {
@@ -37,7 +29,6 @@ img.emoji-small {
 
 hr {
   border: 1px dashed #999999;
-  width: 75%;
   margin: 20px 0;
 }
 
@@ -71,8 +62,8 @@ hr {
 .grow:hover { transform: scale(1.1); }
 
 #text-box {
-  width: 100%;
-  min-width: 100%;
+  width: 90%;
+  min-width: 90%;
   min-height: 100px;
   max-height: 500px;
 }
@@ -100,18 +91,6 @@ hr {
 
 .mb20 {
   margin-bottom: 20px;
-}
-
-.w100 {
-  width: 100%;
-}
-
-.w75 {
-  width: 75%;
-}
-
-.w50 {
-  width: 50%;
 }
 
 .wrap {
