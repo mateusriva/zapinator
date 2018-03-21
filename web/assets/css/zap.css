@@ -34,7 +34,7 @@ hr {
 
 /* Styles */
 .mood-button {
-  margin: 0 20px;
+  margin: 5px 20px;
   width: 100px;
   height: 100px;
 
@@ -91,6 +91,10 @@ hr {
 
 .mb20 {
   margin-bottom: 20px;
+}
+
+.row {
+  margin: 0;
 }
 
 .wrap {
